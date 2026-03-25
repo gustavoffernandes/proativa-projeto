@@ -20,12 +20,12 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
         setMobileOpen={setMobileOpen}
       />
       <div className={cn(
-        "flex flex-1 flex-col transition-all duration-300",
+        "flex flex-1 flex-col transition-all duration-300 min-w-0",
         "md:ml-[260px]",
         collapsed && "md:ml-[72px]"
       )}>
         <ProativaTopbar onMenuClick={() => setMobileOpen(true)} />
-        <main className="flex-1 p-4 md:p-6 overflow-auto">
+        <main className="flex-1 p-4 md:p-6 overflow-auto min-w-0">
           {children}
         </main>
       </div>
