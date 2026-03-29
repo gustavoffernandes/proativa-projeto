@@ -7,17 +7,17 @@ import { cn } from "@/lib/utils";
 import { useAuth } from "@/contexts/AuthContext";
 
 const menuItems = [
-  { path: "/", label: "Visão Geral", icon: LayoutDashboard, adminOnly: false, hideForCompanyUser: false },
-  { path: "/analise", label: "Análise por Pergunta", icon: BarChart3, adminOnly: false, hideForCompanyUser: false },
-  { path: "/empresas", label: "Comparação Empresas", icon: Building2, adminOnly: false, hideForCompanyUser: true },
-  { path: "/demografico", label: "Perfil Demográfico", icon: Users, adminOnly: false, hideForCompanyUser: false },
-  { path: "/heatmap", label: "Heatmap Satisfação", icon: FileText, adminOnly: false, hideForCompanyUser: false },
-  { path: "/evolucao", label: "Evolução Temporal", icon: TrendingUp, adminOnly: false, hideForCompanyUser: false },
-  { path: "/relatorios", label: "Relatórios", icon: Download, adminOnly: false, hideForCompanyUser: false },
-  { path: "/plano-acao", label: "Plano de Ação", icon: ClipboardList, adminOnly: false, hideForCompanyUser: false },
-  { path: "/notas", label: "Bloco de Notas", icon: StickyNote, adminOnly: false, hideForCompanyUser: true },
-  { path: "/empresas-cadastro", label: "Empresas", icon: Briefcase, adminOnly: true, hideForCompanyUser: false },
-  { path: "/integracoes", label: "Integrações", icon: Link2, adminOnly: true, hideForCompanyUser: false },
+  { path: "/", label: "Visão Geral", icon: LayoutDashboard, adminOnly: false, hideForCompanyUser: false, onboardingId: "menu-visao-geral" },
+  { path: "/analise", label: "Análise por Pergunta", icon: BarChart3, adminOnly: false, hideForCompanyUser: false, onboardingId: "menu-analise" },
+  { path: "/empresas", label: "Comparação Empresas", icon: Building2, adminOnly: false, hideForCompanyUser: true, onboardingId: "menu-empresas" },
+  { path: "/demografico", label: "Perfil Demográfico", icon: Users, adminOnly: false, hideForCompanyUser: false, onboardingId: "menu-demografico" },
+  { path: "/heatmap", label: "Heatmap Satisfação", icon: FileText, adminOnly: false, hideForCompanyUser: false, onboardingId: "menu-heatmap" },
+  { path: "/evolucao", label: "Evolução Temporal", icon: TrendingUp, adminOnly: false, hideForCompanyUser: false, onboardingId: "menu-evolucao" },
+  { path: "/relatorios", label: "Relatórios", icon: Download, adminOnly: false, hideForCompanyUser: false, onboardingId: "menu-relatorios" },
+  { path: "/plano-acao", label: "Plano de Ação", icon: ClipboardList, adminOnly: false, hideForCompanyUser: false, onboardingId: "menu-plano-acao" },
+  { path: "/notas", label: "Bloco de Notas", icon: StickyNote, adminOnly: false, hideForCompanyUser: true, onboardingId: "menu-notas" },
+  { path: "/empresas-cadastro", label: "Empresas", icon: Briefcase, adminOnly: true, hideForCompanyUser: false, onboardingId: "menu-empresas-cadastro" },
+  { path: "/integracoes", label: "Integrações", icon: Link2, adminOnly: true, hideForCompanyUser: false, onboardingId: "menu-integracoes" },
 ];
 
 const bottomItems = [
