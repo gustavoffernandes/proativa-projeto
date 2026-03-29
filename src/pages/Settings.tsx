@@ -318,7 +318,7 @@ export default function Settings() {
                           {userRoles.map(ur => {
                             const isEditing = editingUserId === ur.id;
                             const isCurrentUser = ur.user_id === user?.id;
-                            const companyName = ur.company_id ? companiesList.find(c => c.id === ur.company_id)?.company_name || ur.company_id : "—";
+                            const companyName = ur.company_id ? allCompanies.find(c => c.id === ur.company_id)?.company_name || ur.company_id : "—";
                             return (
                               <tr key={ur.id} className="border-b border-border/50 last:border-0">
                                  <td className="px-4 py-2.5 text-xs text-muted-foreground truncate max-w-[180px]" title={ur.user_id}>
