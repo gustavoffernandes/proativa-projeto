@@ -77,6 +77,7 @@ export default function Settings() {
     localStorage.setItem("proativa-fontsize", fontSize);
   }, [fontSize]);
 
+  // Active companies for user creation dropdown
   const { data: companiesList = [] } = useQuery({
     queryKey: ["companies-for-user-creation"],
     queryFn: async () => {
@@ -92,6 +93,20 @@ export default function Settings() {
         if (!seen.has(key)) seen.set(key, { id: c.id, company_name: c.company_name });
       });
       return Array.from(seen.values());
+    },
+    enabled: isAdmin,
+  });
+
+  // All companies (including inactive) for resolving company names in user list
+  const { data: allCompanies = [] } = useQuery({
+    queryKey: ["all-companies-for-lookup"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("google_forms_config")
+        .select("id, company_name")
+        .order("company_name");
+      if (error) throw error;
+      return (data || []) as { id: string; company_name: string }[];
     },
     enabled: isAdmin,
   });
