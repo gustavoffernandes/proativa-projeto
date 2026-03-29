@@ -105,6 +105,7 @@ export function ProativaSidebar({ collapsed, setCollapsed, mobileOpen, setMobile
           )}
           {bottomItems.map((item) => (
             <NavLink key={item.path} to={item.path} onClick={handleNavClick}
+              data-onboarding="menu-configuracoes"
               className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-colors">
               <item.icon className="h-[18px] w-[18px] shrink-0" />
               {(!collapsed || mobileOpen) && <span>{item.label}</span>}
