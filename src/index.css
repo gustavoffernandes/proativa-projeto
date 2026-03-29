@@ -142,3 +142,76 @@
     box-shadow: var(--card-shadow);
   }
 }
+
+/* Intro.js Onboarding Custom Styles */
+.proativa-onboarding-tooltip {
+  max-width: 340px;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px -10px hsl(var(--primary) / 0.25);
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--card));
+  color: hsl(var(--card-foreground));
+}
+
+.proativa-onboarding-tooltip .introjs-tooltip-header {
+  padding: 12px 16px 0;
+}
+
+.proativa-onboarding-tooltip .introjs-tooltiptext {
+  padding: 12px 16px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.proativa-onboarding-tooltip .introjs-tooltipbuttons {
+  border-top: 1px solid hsl(var(--border));
+  padding: 10px 16px;
+}
+
+.proativa-onboarding-tooltip .introjs-button {
+  border: none;
+  border-radius: 8px;
+  padding: 6px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  text-shadow: none;
+  transition: all 0.2s;
+}
+
+.proativa-onboarding-tooltip .introjs-nextbutton,
+.proativa-onboarding-tooltip .introjs-donebutton {
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+}
+
+.proativa-onboarding-tooltip .introjs-nextbutton:hover,
+.proativa-onboarding-tooltip .introjs-donebutton:hover {
+  background: hsl(var(--primary) / 0.9);
+}
+
+.proativa-onboarding-tooltip .introjs-prevbutton {
+  background: hsl(var(--muted));
+  color: hsl(var(--muted-foreground));
+}
+
+.proativa-onboarding-tooltip .introjs-skipbutton {
+  color: hsl(var(--muted-foreground));
+  font-size: 12px;
+}
+
+.proativa-onboarding-tooltip .introjs-progressbar {
+  background: hsl(var(--primary) / 0.15);
+}
+
+.proativa-onboarding-tooltip .introjs-progressbar .introjs-progress {
+  background: hsl(var(--primary));
+}
+
+.proativa-onboarding-highlight {
+  border-radius: 10px;
+}
+
+.introjs-helperLayer {
+  border-radius: 10px;
+  box-shadow: 0 0 0 4000px rgba(0, 0, 0, 0.6), 0 0 0 3px hsl(var(--primary) / 0.5) !important;
+}

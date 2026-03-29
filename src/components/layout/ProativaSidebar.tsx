@@ -7,17 +7,17 @@ import { cn } from "@/lib/utils";
 import { useAuth } from "@/contexts/AuthContext";
 
 const menuItems = [
-  { path: "/", label: "Visão Geral", icon: LayoutDashboard, adminOnly: false, hideForCompanyUser: false },
-  { path: "/analise", label: "Análise por Pergunta", icon: BarChart3, adminOnly: false, hideForCompanyUser: false },
-  { path: "/empresas", label: "Comparação Empresas", icon: Building2, adminOnly: false, hideForCompanyUser: true },
-  { path: "/demografico", label: "Perfil Demográfico", icon: Users, adminOnly: false, hideForCompanyUser: false },
-  { path: "/heatmap", label: "Heatmap Satisfação", icon: FileText, adminOnly: false, hideForCompanyUser: false },
-  { path: "/evolucao", label: "Evolução Temporal", icon: TrendingUp, adminOnly: false, hideForCompanyUser: false },
-  { path: "/relatorios", label: "Relatórios", icon: Download, adminOnly: false, hideForCompanyUser: false },
-  { path: "/plano-acao", label: "Plano de Ação", icon: ClipboardList, adminOnly: false, hideForCompanyUser: false },
-  { path: "/notas", label: "Bloco de Notas", icon: StickyNote, adminOnly: false, hideForCompanyUser: true },
-  { path: "/empresas-cadastro", label: "Empresas", icon: Briefcase, adminOnly: true, hideForCompanyUser: false },
-  { path: "/integracoes", label: "Integrações", icon: Link2, adminOnly: true, hideForCompanyUser: false },
+  { path: "/", label: "Visão Geral", icon: LayoutDashboard, adminOnly: false, hideForCompanyUser: false, onboardingId: "menu-visao-geral" },
+  { path: "/analise", label: "Análise por Pergunta", icon: BarChart3, adminOnly: false, hideForCompanyUser: false, onboardingId: "menu-analise" },
+  { path: "/empresas", label: "Comparação Empresas", icon: Building2, adminOnly: false, hideForCompanyUser: true, onboardingId: "menu-empresas" },
+  { path: "/demografico", label: "Perfil Demográfico", icon: Users, adminOnly: false, hideForCompanyUser: false, onboardingId: "menu-demografico" },
+  { path: "/heatmap", label: "Heatmap Satisfação", icon: FileText, adminOnly: false, hideForCompanyUser: false, onboardingId: "menu-heatmap" },
+  { path: "/evolucao", label: "Evolução Temporal", icon: TrendingUp, adminOnly: false, hideForCompanyUser: false, onboardingId: "menu-evolucao" },
+  { path: "/relatorios", label: "Relatórios", icon: Download, adminOnly: false, hideForCompanyUser: false, onboardingId: "menu-relatorios" },
+  { path: "/plano-acao", label: "Plano de Ação", icon: ClipboardList, adminOnly: false, hideForCompanyUser: false, onboardingId: "menu-plano-acao" },
+  { path: "/notas", label: "Bloco de Notas", icon: StickyNote, adminOnly: false, hideForCompanyUser: true, onboardingId: "menu-notas" },
+  { path: "/empresas-cadastro", label: "Empresas", icon: Briefcase, adminOnly: true, hideForCompanyUser: false, onboardingId: "menu-empresas-cadastro" },
+  { path: "/integracoes", label: "Integrações", icon: Link2, adminOnly: true, hideForCompanyUser: false, onboardingId: "menu-integracoes" },
 ];
 
 const bottomItems = [
@@ -65,7 +65,7 @@ export function ProativaSidebar({ collapsed, setCollapsed, mobileOpen, setMobile
       >
         <div className="flex h-16 items-center justify-between border-b border-sidebar-border px-4">
           <div className="flex items-center gap-3">
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-sidebar-primary">
+            <div data-onboarding="sidebar-logo" className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-sidebar-primary">
               <Shield className="h-5 w-5 text-sidebar-primary-foreground" />
             </div>
             {(!collapsed || mobileOpen) && (
@@ -86,6 +86,7 @@ export function ProativaSidebar({ collapsed, setCollapsed, mobileOpen, setMobile
             const isActive = location.pathname === item.path;
             return (
               <NavLink key={item.path} to={item.path} onClick={handleNavClick}
+                data-onboarding={item.onboardingId}
                 className={cn("group relative flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-200",
                   isActive ? "bg-sidebar-primary text-sidebar-primary-foreground shadow-md" : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground")}>
                 {isActive && <div className="absolute -left-3 top-1/2 h-6 w-1 -translate-y-1/2 rounded-r-full bg-sidebar-ring" />}
@@ -104,6 +105,7 @@ export function ProativaSidebar({ collapsed, setCollapsed, mobileOpen, setMobile
           )}
           {bottomItems.map((item) => (
             <NavLink key={item.path} to={item.path} onClick={handleNavClick}
+              data-onboarding="menu-configuracoes"
               className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-colors">
               <item.icon className="h-[18px] w-[18px] shrink-0" />
               {(!collapsed || mobileOpen) && <span>{item.label}</span>}
