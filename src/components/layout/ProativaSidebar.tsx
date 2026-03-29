@@ -65,7 +65,7 @@ export function ProativaSidebar({ collapsed, setCollapsed, mobileOpen, setMobile
       >
         <div className="flex h-16 items-center justify-between border-b border-sidebar-border px-4">
           <div className="flex items-center gap-3">
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-sidebar-primary">
+            <div data-onboarding="sidebar-logo" className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-sidebar-primary">
               <Shield className="h-5 w-5 text-sidebar-primary-foreground" />
             </div>
             {(!collapsed || mobileOpen) && (
