@@ -77,6 +77,7 @@ export default function Settings() {
     localStorage.setItem("proativa-fontsize", fontSize);
   }, [fontSize]);
 
+  // Active companies for user creation dropdown
   const { data: companiesList = [] } = useQuery({
     queryKey: ["companies-for-user-creation"],
     queryFn: async () => {
@@ -92,6 +93,20 @@ export default function Settings() {
         if (!seen.has(key)) seen.set(key, { id: c.id, company_name: c.company_name });
       });
       return Array.from(seen.values());
+    },
+    enabled: isAdmin,
+  });
+
+  // All companies (including inactive) for resolving company names in user list
+  const { data: allCompanies = [] } = useQuery({
+    queryKey: ["all-companies-for-lookup"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("google_forms_config")
+        .select("id, company_name")
+        .order("company_name");
+      if (error) throw error;
+      return (data || []) as { id: string; company_name: string }[];
     },
     enabled: isAdmin,
   });
@@ -303,7 +318,7 @@ export default function Settings() {
                           {userRoles.map(ur => {
                             const isEditing = editingUserId === ur.id;
                             const isCurrentUser = ur.user_id === user?.id;
-                            const companyName = ur.company_id ? companiesList.find(c => c.id === ur.company_id)?.company_name || ur.company_id : "—";
+                            const companyName = ur.company_id ? allCompanies.find(c => c.id === ur.company_id)?.company_name || ur.company_id : "—";
                             return (
                               <tr key={ur.id} className="border-b border-border/50 last:border-0">
                                  <td className="px-4 py-2.5 text-xs text-muted-foreground truncate max-w-[180px]" title={ur.user_id}>
